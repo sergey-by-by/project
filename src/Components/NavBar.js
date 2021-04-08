@@ -49,7 +49,7 @@ export const NavBar = () => (
 		</Logo>
 		<div>
 
-			<Login><img src={signImg} atl="вход" />
+			<Login><img src={signImg} alt="вход" />
 				<p> Войти</p> </Login>
 		</div>
 	</NavBarStyled>
