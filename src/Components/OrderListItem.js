@@ -30,9 +30,9 @@ background-repeat: no-repeat;
 cursor: pointer;
 `;
 
-export const OrderListItem = () => (
+export const OrderListItem = ({ order }) => (
 	<OrderItemStyled>
-		<ItemName>JS Burger</ItemName>
+		<ItemName>{order.name}</ItemName>
 		<span>2</span>
 		<ItemPrice>750 P</ItemPrice>
 		<TrashButton />
