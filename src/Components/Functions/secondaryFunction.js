@@ -1,11 +1,13 @@
 import React from 'react';
 
-export const totalPriceItems = order => order.price * order.count;
+export const totalPriceItems = order => {
 
-export function formatCurrency(prices) {
+	const countTopping = order.topping && order.topping.filter(item => item.checked).length
+	const priceTopping = (order.price * 0.1) * countTopping;
 
-	const formatPrice = prices.toLocaleString('ru-RU',
-		{ style: 'currency', currency: 'RUB' })
-
-	return (formatPrice);
+	return (order.price + priceTopping) * order.count;
 };
+
+export const formatCurrency = value => value.toLocaleString('ru-RU',
+	{ style: 'currency', currency: 'RUB' });
+
