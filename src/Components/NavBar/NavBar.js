@@ -40,18 +40,45 @@ font-size: 16px;
 
 `;
 
-export const NavBar = () => (
+const User = styled.div`
+display: flex;
+align-items: center;
+text-align: center;
+`;
+const LogOut = styled.span`
+font-size: 20px;
+font-weight: 700px;
+cursor: pointer;
+margin-right: 30px;
+`;
+
+const Figure = styled.figure`
+margin: 0 30px;
+`;
+
+
+
+export const NavBar = ({ authentication, logIn, logOut }) => (
 	<NavBarStyled>
 		<Logo>
 			<ImgLogo src={logoImg} alt="картинка" />
 			<H1>Mak</H1>
 
 		</Logo>
-		<div>
-
-			<Login><img src={signImg} alt="вход" />
-				<p> Войти</p> </Login>
-		</div>
+		{authentication ?
+			<User>
+				<Figure>
+					<img src={signImg} alt={authentication.displayName} />
+					<figcaption>{authentication.displayName}</figcaption>
+				</Figure>
+				<LogOut title="Выйти" onClick={logOut}>X</LogOut>
+			</User>
+			:
+			<Login onClick={logIn} >
+				<Figure>
+					<img src={signImg} alt="вход" />
+					<figcaption>войти</figcaption>
+				</Figure><p></p> </Login>}
 	</NavBarStyled>
 
 )
